@@ -12,13 +12,6 @@ export default class CivilianSystem {
       const civ = this.civilians.create(Phaser.Math.Between(0, 8000), Phaser.Math.Between(0, 6000), 'civilian');
       civ.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
     }
-    // Animations for civilians
-    this.scene.anims.create({
-      key: 'civilian-walk',
-      frames: this.scene.anims.generateFrameNumbers('civilian', { start: 0, end: 3 }),
-      frameRate: 8,
-      repeat: -1
-    });
   }
 
   propagatePanic(pressure: PressureSystem, player: Phaser.Physics.Arcade.Sprite) {
@@ -28,11 +21,11 @@ export default class CivilianSystem {
       if (pres > 50 || Phaser.Math.Distance.Between(sprite.x, sprite.y, player.x, player.y) < 200) {
         const angle = Phaser.Math.Angle.Between(sprite.x, sprite.y, player.x, player.y) + Math.PI;
         sprite.setVelocity(Math.cos(angle) * 150, Math.sin(angle) * 150);
-        sprite.anims.play('civilian-walk', true); // Play on panic
+        sprite.anims.play('civilian-walk', true);
       } else {
         if (Math.random() < 0.01) {
           sprite.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
-          sprite.anims.play('civilian-walk', true); // Play on wander
+          sprite.anims.play('civilian-walk', true);
         }
       }
     });
