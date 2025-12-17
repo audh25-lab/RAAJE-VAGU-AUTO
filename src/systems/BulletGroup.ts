@@ -16,7 +16,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
 
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
-    if (this.x < 0 || this.x > this.scene.cameras.main.width || this.y < 0 || this.y > this.scene.cameras.main.height) {
+    if (this.x < 0 || this.x > this.scene.cameras.main.worldView.width || this.y < 0 || this.y > this.scene.cameras.main.worldView.height) { // Optimized bounds check
       this.setActive(false);
       this.setVisible(false);
     }
@@ -40,5 +40,9 @@ export default class BulletGroup extends Phaser.Physics.Arcade.Group {
     if (bullet) {
       bullet.fire(x, y, rotation);
     }
+  }
+
+  clearAll() {
+    this.getChildren().forEach(b => b.destroy());
   }
 }
