@@ -11,6 +11,10 @@ export default class VehicleSystem {
       const car = this.vehicles.create(Phaser.Math.Between(0, 8000), Phaser.Math.Between(0, 6000), 'car');
       car.setData('damage', 0);
     }
+    this.scene.physics.add.collider(this.vehicles, this.scene['tilemap'].getLayer('ground'), (vehicle, tile) => {
+      vehicle.setData('damage', vehicle.getData('damage') + 10);
+      if (vehicle.getData('damage') > 100) vehicle.destroy();
+    });
   }
 
   stealNearest(player: Phaser.Physics.Arcade.Sprite, callback: (v: Phaser.Physics.Arcade.Sprite) => void) {
