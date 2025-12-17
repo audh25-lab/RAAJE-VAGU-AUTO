@@ -63,6 +63,7 @@ export default class GangSystem {
           callback: () => {
             if (member.active) {
               this.scene.physics.moveToObject(member, this.scene['player'], 100);
+              member.anims.play('gang-walk', true); // Play animation
             }
           },
           loop: true
