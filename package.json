@@ -1,27 +1,28 @@
 {
-  "name": "raaje-vagu-auto",
+  "name": "raajje-theft-auto-1",
+  "private": true,
   "version": "1.0.0",
-  "description": "Top-down GTA 1/2 style crime game based on RAAJE-VAGU-AUTO Bible",
+  "type": "module",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url ./",
-    "cap-init": "npx cap init com.raajevaguauto.app 'RAAJE-VAGU-AUTO'",
-    "cap-add-android": "npx cap add android",
-    "cap-add-ios": "npx cap add ios",
-    "cap-sync": "npx cap sync",
-    "cap-open-android": "npx cap open android",
-    "cap-open-ios": "npx cap open ios"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "cap:add": "npx cap add",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
+    "cap:build-apk": "npm run build && npx cap sync && cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
-    "phaser": "^3.80.1"
+    "phaser": "^3.80.0",
+    "tone": "^14.7.77"
   },
   "devDependencies": {
-    "@capacitor/android": "^6.1.2",
-    "@capacitor/cli": "^6.1.2",
-    "@capacitor/core": "^6.1.2",
-    "@capacitor/ios": "^6.1.2",
-    "@types/node": "^22.5.1",
-    "parcel": "^2.12.0",
-    "typescript": "^5.6.2"
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0",
+    "@types/node": "^22.7.4",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vite-plugin-singlefile": "^0.13.5"
   }
 }
